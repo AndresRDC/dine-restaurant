@@ -1,0 +1,35 @@
+.reservation-form {
+  width: 100%;
+}
+
+.reservation-form__input,
+.reservation-form__input--with-label {
+  font-size: 1em;
+  padding: 0.7em;
+  width: 100%;
+  margin-bottom: 1em;
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: gray;
+}
+.width100 {
+  width: 100%;
+}
+.reservation-form__label {
+  display: inline-block;
+  width: 38%;
+  margin-right: 2%;
+}
+.reservation-form__input--with-label {
+  width: 58%;
+  margin-left: 2%;
+}
+.reservation-form__btn {
+  width: 100%;
+  border: 0;
+  padding: 1em;
+  cursor: pointer;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-font-color);
+  text-transform: uppercase;
+}
