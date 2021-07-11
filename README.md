@@ -2,7 +2,7 @@
 
 Practica realizada con React basado en el challenge de FrontendMentor [Dine restaurant website](https://www.frontendmentor.io/challenges/dine-restaurant-website-yAt7Vvxt7) Simulando la web de Dine restaurant con la posibilidad de generar una reserva. 
 
-Puedes ver el demo [aquí](dineeatery.netlify.app)
+Puedes ver el demo [aquí](https://dineeatery.netlify.app/)
 
 ## Instalación ⚙️
 
