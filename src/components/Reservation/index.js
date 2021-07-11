@@ -18,16 +18,23 @@ function Reservation(props) {
   };
   return (
     <div className="reservation">
-      {(!reservation || editMode) && (
-        <ReservationForm reservation={reservation} onSave={saveReservation} />
-      )}
-      {reservation && !editMode && (
-        <ReservationDetail
-          reservation={reservation}
-          deleteReservation={deleteReservation}
-          enableEditMode={enableEditMode}
-        />
-      )}
+      <div className="container">
+        <div className="reservation__container">
+          {(!reservation || editMode) && (
+            <ReservationForm
+              reservation={reservation}
+              onSave={saveReservation}
+            />
+          )}
+          {reservation && !editMode && (
+            <ReservationDetail
+              reservation={reservation}
+              deleteReservation={deleteReservation}
+              enableEditMode={enableEditMode}
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

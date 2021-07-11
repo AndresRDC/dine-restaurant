@@ -10,7 +10,12 @@ export default function ViewReservation() {
 
   return (
     <div>
-      <Header subtitle={subtitle} text={text} />
+      <Header
+        subtitle={subtitle}
+        text={text}
+        nameNavigate={"Go to home"}
+        pathNavigate={"/"}
+      />
       <Reservation />
       <Footer />
     </div>

@@ -24,12 +24,3 @@
   width: 58%;
   margin-left: 2%;
 }
-.reservation-form__btn {
-  width: 100%;
-  border: 0;
-  padding: 1em;
-  cursor: pointer;
-  background-color: var(--primary-bg-color);
-  color: var(--primary-font-color);
-  text-transform: uppercase;
-}

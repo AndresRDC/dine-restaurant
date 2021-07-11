@@ -1,0 +1,59 @@
+.about-card {
+  margin-bottom: 5em;
+}
+.about-card__aside {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.about-card__image {
+  position: relative;
+  width: 100%;
+  object-fit: cover;
+}
+.about-card__content {
+  position: relative;
+  text-align: center;
+}
+.about-card__content:before {
+  display: block;
+  position: absolute;
+  left: calc(50% - 50px);
+  top: -2em;
+  content: " ";
+  background-image: url("../../assets/img/divisor-about-card.svg");
+  background-size: 152px 23px;
+  background-repeat: no-repeat;
+  height: 1.5em;
+  width: 100px;
+}
+
+.about-card__title {
+  margin: 1em 0;
+  font-size: 2em;
+  line-height: 1.3em;
+  font-weight: 800;
+}
+@media screen and (min-width: 800px) {
+  .about-card {
+    display: flex;
+    margin-bottom: 0;
+  }
+
+  .about-card__body {
+    display: flex;
+    align-items: center;
+  }
+  .about-card__content {
+    text-align: left;
+    width: 80%;
+  }
+  .about-card__content:before {
+    left: 0;
+    top: 0;
+  }
+
+  .about-card__image {
+    width: 80%;
+  }
+}

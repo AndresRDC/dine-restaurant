@@ -1,0 +1,65 @@
+.menu {
+  width: 100%;
+  text-align: center;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-font-color);
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+.menu__container {
+  display: flex;
+  flex-direction: column;
+}
+.menu__foods {
+  width: 100%;
+}
+.menu__body {
+  text-align: center;
+}
+.menu__title {
+  margin: 1em 0;
+  font-size: 2em;
+  line-height: 1.3em;
+  font-weight: 800;
+}
+
+.menu__content {
+  position: relative;
+  text-align: center;
+}
+.menu__content:before {
+  display: block;
+  position: absolute;
+  left: calc(50% - 50px);
+  top: -2em;
+  content: " ";
+  background-image: url("../../assets/img/divisor-about-card.svg");
+  background-size: 152px 23px;
+  background-repeat: no-repeat;
+  height: 1.5em;
+  width: 100px;
+}
+
+@media screen and (min-width: 800px) {
+  .menu__container {
+    flex-direction: row;
+  }
+  .menu__body {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+  }
+
+  .menu__title {
+    margin: 1em 0;
+  }
+  .menu__content {
+    width: 80%;
+    text-align: left;
+  }
+  .menu__content:before {
+    left: 0;
+    top: 0;
+  }
+}

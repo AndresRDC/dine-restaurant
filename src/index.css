@@ -5,8 +5,11 @@
   --danger: #dc3545;
   --warning: #ffc107;
   --primary-bg-color: #000;
+  --opposite-primary-bg-color: #fff;
   --primary-font-color: #fff;
+  --opposite-primary-font-color: #000;
   --primary-font-family: "Inter", sans-serif;
+  --max-width: 1200px;
 }
 *,
 ::after,
@@ -22,4 +25,18 @@ html {
   font-family: var(--primary-font-family);
   line-height: 1.7;
   font-size: 18px;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1em;
+  padding-right: 1em;
+  max-width: var(--max-width);
+}
+
+.image-shadow {
+  box-shadow: 0 20px 20px -10px rgba(100, 100, 100, 0.3);
+  -webkit-box-shadow: 0 20px 20px -10px rgba(100, 100, 100, 0.3);
+  -moz-box-shadow: 0 20px 20px -10px rgba(100, 100, 100, 0.3);
 }

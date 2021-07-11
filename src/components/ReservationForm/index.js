@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./index.css";
 import PropTypes from "prop-types";
+import Button from "../Button";
 
 //Date
 let beginDate = new Date();
@@ -110,11 +111,9 @@ function ReservationForm({ onSave, reservation }) {
         <option value="4">4 people</option>
       </select>
 
-      <input
-        className="reservation-form__btn"
-        type="submit"
-        value="Make reservation"
-      />
+      <Button type="submit" size="full">
+        Make reservation
+      </Button>
     </form>
   );
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
+import Button from "../Button";
 
 function ReservationDetail({ reservation, deleteReservation, enableEditMode }) {
   const { dateTime, name, email, quantity } = reservation;
@@ -10,36 +11,45 @@ function ReservationDetail({ reservation, deleteReservation, enableEditMode }) {
   const time = datelocalISO.substr(11, 5);
 
   return (
-    <div className="card-reservation">
-      <div className="card-reservation__header">
+    <article className="card-reservation">
+      <header className="card-reservation__header">
         <h2 className="card-reservation__title">You have a reservation</h2>
-      </div>
+      </header>
       <div className="card-reservation__body">
-        <p className="card-reservation__text">Name: {name}</p>
-        <p className="card-reservation__text">Email: {email}</p>
-        <p className="card-reservation__text">Fecha: {date}</p>
-        <p className="card-reservation__text">Time: {time}</p>
-        <p className="card-reservation__text">
+        <p className="card-reservation__property">Name: {name}</p>
+        <p className="card-reservation__property">Email: {email}</p>
+        <p className="card-reservation__property">Fecha: {date}</p>
+        <p className="card-reservation__property">Time: {time}</p>
+        <p className="card-reservation__property">
           {quantity > 1 ? "People:" : "Person:"} {quantity}
         </p>
       </div>
-      <input
-        type="button"
-        className="btn-edit"
-        value="Edit"
-        onClick={() => {
-          enableEditMode();
-        }}
-      />
-      <input
-        type="button"
-        className="btn-delete"
-        value="Delete"
-        onClick={() => {
-          deleteReservation();
-        }}
-      />
-    </div>
+      <footer>
+        <Button
+          className="btn-edit"
+          fill="outline"
+          color="warning"
+          fontColor="warning"
+          size="default"
+          onClick={() => {
+            enableEditMode();
+          }}
+        >
+          Edit
+        </Button>
+        <Button
+          className="btn-delete"
+          fill="outline"
+          fontColor="danger"
+          color="danger"
+          onClick={() => {
+            deleteReservation();
+          }}
+        >
+          Delete
+        </Button>
+      </footer>
+    </article>
   );
 }
 

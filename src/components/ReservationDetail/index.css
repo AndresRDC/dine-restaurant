@@ -2,40 +2,11 @@
   width: 100%;
 }
 .card-reservation__body {
+  line-height: 2.9em;
 }
 
 .btn-edit,
 .btn-delete {
   width: 48%;
-  border: 0;
-  padding: 1em;
-  margin: 1em 1%;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-
-.btn-delete {
-  border-color: var(--danger);
-  border-width: 2px;
-  border-style: solid;
-  background-color: var(--ligth);
-  color: var(--danger);
-}
-
-.btn-edit {
-  border-color: var(--warning);
-  border-width: 2px;
-  border-style: solid;
-  background-color: var(--ligth);
-  color: var(--warning);
-}
-
-.btn-edit:hover {
-  background-color: var(--warning);
-  color: var(--dark);
-}
-
-.btn-delete:hover {
-  background-color: var(--danger);
-  color: var(--ligth);
+  margin: 2em 1% 0;
 }

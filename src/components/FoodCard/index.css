@@ -1,0 +1,53 @@
+.food-card {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3em;
+}
+.food-card__aside {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.food-card__image {
+  width: 100%;
+  object-fit: cover;
+}
+.food-card__content {
+  text-align: center;
+}
+.food-card__title {
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+  font-size: 1.3em;
+  line-height: 1.3em;
+  font-weight: 800;
+}
+@media screen and (min-width: 800px) {
+  .food-card {
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8em;
+  }
+  .food-card__body {
+    display: flex;
+    align-items: center;
+  }
+  .food-card__content {
+    text-align: left;
+    width: 80%;
+  }
+  .food-card__aside {
+    min-width: 200px;
+    width: 50%;
+    height: 50%;
+  }
+  .food-card__image {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+  }
+  .food-card__title {
+    margin: 0.5em 0;
+    line-height: 1em;
+  }
+}

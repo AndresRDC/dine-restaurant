@@ -1,0 +1,7 @@
+@media screen and (min-width: 800px) {
+  .food-card-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
