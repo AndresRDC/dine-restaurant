@@ -2,28 +2,30 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import ReservationForm from "../ReservationForm";
 import ReservationDetail from "../ReservationDetail";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
-function Reservation(props) {
-  const [reservation, setReservation] = useState(null);
+function Reservation() {
+  const dateTimeReviver = (key, value) =>
+    key === "dateTime" ? new Date(value) : value;
+  const [reservation, setReservation] = useLocalStorage(
+    "reservation",
+    null,
+    dateTimeReviver
+  );
   const [editMode, setEditMode] = useState(false);
+
   useEffect(() => {
-    const loadReservation = () => {
-      let reservation = JSON.parse(localStorage.getItem("reservation"));
-      if (reservation) {
-        reservation.dateTime = new Date(reservation.dateTime);
-      }
-      setReservation(reservation);
-    };
-    loadReservation();
-  }, []);
+    // delete expired reservation
+    if (reservation && reservation.dateTime < new Date()) {
+      setReservation(null);
+    }
+  }, [reservation, setReservation]);
 
   const saveReservation = (reservation) => {
-    localStorage.setItem("reservation", JSON.stringify(reservation));
     setReservation(reservation);
     setEditMode(false);
   };
   const deleteReservation = () => {
-    localStorage.removeItem("reservation");
     setReservation(null);
   };
   const enableEditMode = () => {
