@@ -3,47 +3,56 @@ import "./index.css";
 import PropTypes from "prop-types";
 import Button from "../Button";
 
-//Date
-let beginDate = new Date();
-beginDate.setDate(beginDate.getDate() + 1);
-const tzoffset = beginDate.getTimezoneOffset() * 60000; //offset in milliseconds
-const startDatelocalISO = new Date(beginDate - tzoffset)
-  .toISOString()
-  .slice(0, -1);
-const startDate = startDatelocalISO.substr(0, 10);
-const startTime = "12:00";
-let limitDate = new Date();
-limitDate.setDate(limitDate.getDate() + 30);
-const endDateLocalISO = new Date(limitDate - tzoffset)
-  .toISOString()
-  .slice(0, -1);
-const endDate = endDateLocalISO.substr(0, 10);
-const endTime = "23:00";
-
 function ReservationForm({ onSave, reservation }) {
+  //date functions
+  const getDateLocalISO = (date) => {
+    const tzoffset = beginDate.getTimezoneOffset() * 60000; //timezone offset in milliseconds
+    return new Date(date - tzoffset).toISOString().slice(0, -1);
+  };
+  const getDateFromDateLocalISO = (dateLocalISO) => {
+    return dateLocalISO.substr(0, 10);
+  };
+  const getTimeFromDateLocalISO = (dateLocalISO) => {
+    return dateLocalISO.substr(11, 5);
+  };
+  //min date time
+  let beginDate = new Date();
+  beginDate.setDate(beginDate.getDate() + 1);
+  const startDate = getDateFromDateLocalISO(getDateLocalISO(beginDate));
+  //max date time
+  let limitDate = new Date();
+  limitDate.setDate(limitDate.getDate() + 30);
+  const endDate = getDateFromDateLocalISO(getDateLocalISO(limitDate));
+  //time
+  const startTime = "12:00";
+  const endTime = "23:00";
+  //init
   let reservationDate = null;
   let reservationTime = null;
   if (reservation?.dateTime) {
-    const dateTime = reservation.dateTime;
-    const tzoffset = dateTime.getTimezoneOffset() * 60000; //offset in milliseconds
-    const datelocalISO = new Date(dateTime - tzoffset)
-      .toISOString()
-      .slice(0, -1);
-    reservationDate = datelocalISO.substr(0, 10);
-    reservationTime = datelocalISO.substr(11, 5);
+    const datelocalISO = getDateLocalISO(reservation.dateTime);
+    reservationDate = getDateFromDateLocalISO(datelocalISO);
+    reservationTime = getTimeFromDateLocalISO(datelocalISO);
   }
-
-  const [name, setName] = useState(reservation?.name || "");
-  const [email, setEmail] = useState(reservation?.email || "");
-  const [date, setDate] = useState(reservationDate || startDate);
-  const [time, setTime] = useState(reservationTime || startTime);
-  const [quantity, setQuantity] = useState(reservation?.quantity || 1);
+  const [formReservation, setFormReservation] = useState({
+    name: reservation?.name || "",
+    email: reservation?.email || "",
+    date: reservationDate || startDate,
+    time: reservationTime || startTime,
+    quantity: reservation?.quantity || 1,
+  });
+  const { name, email, date, time, quantity } = formReservation;
 
   const onSubmit = (e) => {
     e.preventDefault();
     const dateTime = new Date(date + " " + time);
     onSave({ name, email, dateTime, quantity: +quantity });
   };
+
+  const handleInputChange = ({ target }) => {
+    setFormReservation({ ...formReservation, [target.name]: target.value });
+  };
+
   return (
     <form className="reservation-form" onSubmit={onSubmit}>
       <input
@@ -53,7 +62,7 @@ function ReservationForm({ onSave, reservation }) {
         id="name"
         placeholder="Name"
         value={name}
-        onChange={({ target }) => setName(target.value)}
+        onChange={handleInputChange}
         required
       />
       <input
@@ -63,7 +72,7 @@ function ReservationForm({ onSave, reservation }) {
         id="email"
         placeholder="Email"
         value={email}
-        onChange={({ target }) => setEmail(target.value)}
+        onChange={handleInputChange}
         required
       />
       <div className="width100">
@@ -76,7 +85,7 @@ function ReservationForm({ onSave, reservation }) {
           id="date"
           name="date"
           value={date}
-          onChange={({ target }) => setDate(target.value)}
+          onChange={handleInputChange}
           min={startDate}
           max={endDate}
           required
@@ -92,25 +101,24 @@ function ReservationForm({ onSave, reservation }) {
           id="time"
           name="time"
           value={time}
-          onChange={({ target }) => setTime(target.value)}
+          onChange={handleInputChange}
           min={startTime}
           max={endTime}
           required
         />
       </div>
       <select
-        name="people"
+        name="quantity"
         id="people"
         className="reservation-form__input"
         value={quantity}
-        onChange={({ target }) => setQuantity(target.value)}
+        onChange={handleInputChange}
       >
         <option value="1">1 person</option>
         <option value="2">2 people</option>
         <option value="3">3 people</option>
         <option value="4">4 people</option>
       </select>
-
       <Button type="submit" size="full">
         Make reservation
       </Button>
