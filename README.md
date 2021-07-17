@@ -1,8 +1,10 @@
 # React Challenge "Dine restaurant website" 🍴
 
-Practica realizada con React basado en el challenge de FrontendMentor [Dine restaurant website](https://www.frontendmentor.io/challenges/dine-restaurant-website-yAt7Vvxt7) Simulando la web de Dine restaurant con la posibilidad de generar una reserva. 
+Practica realizada con React basado en el challenge de FrontendMentor [Dine restaurant website](https://www.frontendmentor.io/challenges/dine-restaurant-website-yAt7Vvxt7) Simulando la web de Dine restaurant con la posibilidad de generar una reserva.
 
-Puedes ver el demo [aquí](https://dineeatery.netlify.app/)
+Implementanciones: Functional Components - Hooks - Custom Hooks - Router - Helpers - LocalStorage
+
+Puedes ver el demo [aquí](https://dine-countryrestaurant.netlify.app/)
 
 ## Instalación ⚙️
 

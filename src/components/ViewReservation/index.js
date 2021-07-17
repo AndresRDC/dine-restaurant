@@ -1,9 +1,13 @@
-import React from "react";
+import PropTypes from "prop-types";
+import Header from "../Header";
 import Reservation from "../Reservation";
 import Footer from "../Footer";
-import Header from "../Header";
 
-export default function ViewReservation() {
+export default function ViewReservation({
+  reservation,
+  saveReservation,
+  deleteReservation,
+}) {
   const subtitle = "Reservations";
   const text =
     "We can't wait to host you. If you have any special requirements please feel free to call on the phone number bellow. We'll be happy to accommodate you";
@@ -16,8 +20,23 @@ export default function ViewReservation() {
         nameNavigate={"Go to home"}
         pathNavigate={"/"}
       />
-      <Reservation />
+      <Reservation
+        reservation={reservation}
+        saveReservation={saveReservation}
+        deleteReservation={deleteReservation}
+      />
       <Footer />
     </div>
   );
 }
+
+ViewReservation.propTypes = {
+  reservation: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    dateTime: PropTypes.object,
+    quantity: PropTypes.number,
+  }),
+  saveReservation: PropTypes.func,
+  deleteReservation: PropTypes.func,
+};

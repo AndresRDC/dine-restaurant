@@ -1,32 +1,18 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import "./index.css";
 import ReservationForm from "../ReservationForm";
 import ReservationDetail from "../ReservationDetail";
-import useLocalStorage from "../../hooks/useLocalStorage";
 
-function Reservation() {
-  const dateTimeReviver = (key, value) =>
-    key === "dateTime" ? new Date(value) : value;
-  const [reservation, setReservation] = useLocalStorage(
-    "reservation",
-    null,
-    dateTimeReviver
-  );
+function Reservation({ reservation, saveReservation, deleteReservation }) {
   const [editMode, setEditMode] = useState(false);
 
-  useEffect(() => {
-    // delete expired reservation
-    if (reservation && reservation.dateTime < new Date()) {
-      setReservation(null);
-    }
-  }, [reservation, setReservation]);
-
-  const saveReservation = (reservation) => {
-    setReservation(reservation);
+  const onSave = (reservation) => {
+    saveReservation(reservation);
     setEditMode(false);
   };
-  const deleteReservation = () => {
-    setReservation(null);
+  const onDelete = () => {
+    deleteReservation();
   };
   const enableEditMode = () => {
     setEditMode(true);
@@ -36,15 +22,12 @@ function Reservation() {
       <div className="container">
         <div className="reservation__container">
           {(!reservation || editMode) && (
-            <ReservationForm
-              reservation={reservation}
-              onSave={saveReservation}
-            />
+            <ReservationForm reservation={reservation} onSave={onSave} />
           )}
           {reservation && !editMode && (
             <ReservationDetail
               reservation={reservation}
-              deleteReservation={deleteReservation}
+              onDelete={onDelete}
               enableEditMode={enableEditMode}
             />
           )}
@@ -53,5 +36,16 @@ function Reservation() {
     </div>
   );
 }
+
+Reservation.propTypes = {
+  reservation: PropTypes.shape({
+    name: PropTypes.string,
+    email: PropTypes.string,
+    dateTime: PropTypes.object,
+    quantity: PropTypes.number,
+  }),
+  saveReservation: PropTypes.func,
+  deleteReservation: PropTypes.func,
+};
 
 export default Reservation;

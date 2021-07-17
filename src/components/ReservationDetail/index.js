@@ -1,15 +1,17 @@
-import React from "react";
 import PropTypes from "prop-types";
 import "./index.css";
 import Button from "../Button";
+import {
+  getDateFromDateLocalISO,
+  getDateLocalISO,
+  getTimeFromDateLocalISO,
+} from "../../helpers/dateUtils";
 
-function ReservationDetail({ reservation, deleteReservation, enableEditMode }) {
+function ReservationDetail({ reservation, onDelete, enableEditMode }) {
   const { dateTime, name, email, quantity } = reservation;
-  const tzoffset = dateTime.getTimezoneOffset() * 60000; //offset in milliseconds
-  const datelocalISO = new Date(dateTime - tzoffset).toISOString().slice(0, -1);
-  const date = datelocalISO.substr(0, 10);
-  const time = datelocalISO.substr(11, 5);
-
+  const datelocalISO = getDateLocalISO(dateTime);
+  const date = getDateFromDateLocalISO(datelocalISO);
+  const time = getTimeFromDateLocalISO(datelocalISO);
   return (
     <article className="card-reservation">
       <header className="card-reservation__header">
@@ -43,7 +45,7 @@ function ReservationDetail({ reservation, deleteReservation, enableEditMode }) {
           fontColor="danger"
           color="danger"
           onClick={() => {
-            deleteReservation();
+            onDelete();
           }}
         >
           Delete
@@ -60,7 +62,7 @@ ReservationDetail.propTypes = {
     dateTime: PropTypes.object,
     quantity: PropTypes.number,
   }),
-  deleteReservation: PropTypes.func,
+  onDelete: PropTypes.func,
   enableEditMode: PropTypes.func,
 };
 

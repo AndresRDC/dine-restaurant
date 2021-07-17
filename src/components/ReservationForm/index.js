@@ -1,20 +1,14 @@
-import React, { useState } from "react";
-import "./index.css";
+import { useState } from "react";
 import PropTypes from "prop-types";
+import "./index.css";
 import Button from "../Button";
+import {
+  getDateFromDateLocalISO,
+  getDateLocalISO,
+  getTimeFromDateLocalISO,
+} from "../../helpers/dateUtils";
 
 function ReservationForm({ onSave, reservation }) {
-  //date functions
-  const getDateLocalISO = (date) => {
-    const tzoffset = beginDate.getTimezoneOffset() * 60000; //timezone offset in milliseconds
-    return new Date(date - tzoffset).toISOString().slice(0, -1);
-  };
-  const getDateFromDateLocalISO = (dateLocalISO) => {
-    return dateLocalISO.substr(0, 10);
-  };
-  const getTimeFromDateLocalISO = (dateLocalISO) => {
-    return dateLocalISO.substr(11, 5);
-  };
   //min date time
   let beginDate = new Date();
   beginDate.setDate(beginDate.getDate() + 1);
