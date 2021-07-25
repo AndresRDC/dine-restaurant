@@ -5,9 +5,7 @@
   --danger: #dc3545;
   --warning: #ffc107;
   --primary-bg-color: #000;
-  --opposite-primary-bg-color: #fff;
   --primary-font-color: #fff;
-  --opposite-primary-font-color: #000;
   --primary-font-family: "Inter", sans-serif;
   --max-width: 1200px;
 }

@@ -35,7 +35,7 @@
   margin-bottom: 1em;
 }
 .family-card__service:first-child {
-  color: var(--opposite-primary-font-color);
+  color: var(--dark);
   font-weight: 500;
 }
 

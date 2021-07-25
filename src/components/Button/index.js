@@ -13,10 +13,10 @@ function Button({
 }) {
   let classNameAll = "btn";
   classNameAll += className ? " " + className : "";
-  classNameAll += fill ? " btn--" + fill : "";
-  classNameAll += size ? " btn--" + size : "";
-  classNameAll += color ? " btn--" + color : "";
-  classNameAll += fontColor ? " btn--font-" + fontColor : "";
+  classNameAll += fill ? " btn-" + fill : "";
+  classNameAll += size ? " btn-" + size : "";
+  classNameAll += color ? " btn-" + color : "";
+  classNameAll += fontColor ? " btn-font-" + fontColor : "";
 
   return (
     <button className={classNameAll} type={type} onClick={onClick}>
@@ -28,13 +28,8 @@ function Button({
 Button.propTypes = {
   fill: PropTypes.oneOf(["outline", "solid"]),
   size: PropTypes.oneOf(["small", "default", "large", "full"]),
-  color: PropTypes.oneOf(["primary", "opposite-primary", "danger", "warning"]),
-  fontColor: PropTypes.oneOf([
-    "primary",
-    "opposite-primary",
-    "danger",
-    "warning",
-  ]),
+  color: PropTypes.oneOf(["primary", "danger", "warning"]),
+  fontColor: PropTypes.oneOf(["primary", "danger", "warning"]),
   type: PropTypes.oneOf(["button", "submit", "reset"]),
   onClick: PropTypes.func,
 };
