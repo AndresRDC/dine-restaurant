@@ -5,9 +5,10 @@ import ViewHome from "./components/ViewHome";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { useEffect } from "react";
 
+const dateTimeReviver = (key, value) =>
+  key === "dateTime" ? new Date(value) : value;
+
 function App() {
-  const dateTimeReviver = (key, value) =>
-    key === "dateTime" ? new Date(value) : value;
   const [reservation, setReservation] = useLocalStorage(
     "reservation",
     null,
